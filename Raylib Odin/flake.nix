@@ -26,7 +26,9 @@
               libGL
               libGL.dev
               alsa-lib
-            ] ++ xorgLibs;
+              raylib
+            ]
+            ++ xorgLibs;
 
             shellHook = ''
               export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:${
