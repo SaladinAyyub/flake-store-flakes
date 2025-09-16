@@ -1,0 +1,18 @@
+[
+  {
+    "name": "hikari-crescent-python",
+    "description": "Develop Hikari Discord Bots with Hikari Crescent, edit shell.nix for more."
+  },
+  {
+    "name": "python-bare",
+    "description": "A bare(empty) template flake for Python Projects, edit shell.nix to add packages"
+  },
+  {
+    "name": "raylib-odin",
+    "description": "Develop Raylib Games with Odin Programming Language"
+  },
+  {
+    "name": "unreal-vscode-intellisense",
+    "description": "Unreal Engine + VSCode IntelliSense environment for seemless integration"
+  }
+]
