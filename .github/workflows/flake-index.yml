@@ -25,7 +25,7 @@ jobs:
           first=true
           for dir in */; do
             if [ -f "$dir/flake.nix" ]; then
-              desc=$(nix eval --impure --expr "((builtins.getFlake (toString ./$dir)).description or \"\")" --raw || echo "")
+              desc=$(nix eval --impure --expr "((builtins.getFlake \"path:$dir\").description or \"\")" --raw || echo "")
               if [ -z "$desc" ]; then
                 desc="No description provided"
               fi
