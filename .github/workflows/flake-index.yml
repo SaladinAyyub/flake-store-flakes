@@ -5,7 +5,11 @@ on:
     branches: [ main ]
     paths-ignore:
       - flakes.json
-  workflow_dispatch: # allow manual trigger too
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
 
 jobs:
   build:
