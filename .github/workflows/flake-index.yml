@@ -1,0 +1,47 @@
+name: Generate Flake Index
+
+on:
+  push:
+    branches: [ main ]
+    paths-ignore:
+      - flakes.json
+  workflow_dispatch: # allow manual trigger too
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Generate flakes.json
+        run: |
+          echo "[" > flakes.json
+          first=true
+          for dir in */; do
+            if [ -f "$dir/flake.nix" ]; then
+              desc=$(nix eval --impure --expr "((builtins.getFlake (toString ./$dir)).description or \"\")" --raw || echo "")
+              if [ -z "$desc" ]; then
+                desc="No description provided"
+              fi
+
+              if [ "$first" = true ]; then
+                first=false
+              else
+                echo "," >> flakes.json
+              fi
+
+              echo "  {\"name\": \"${dir%/}\", \"description\": \"$desc\"}" >> flakes.json
+            fi
+          done
+          echo "]" >> flakes.json
+
+      - name: Commit flakes.json
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add flakes.json
+          git commit -m "Update flakes.json" || echo "No changes"
+          git push
+
