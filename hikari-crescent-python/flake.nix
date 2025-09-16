@@ -1,5 +1,5 @@
 {
-  description = "Hikari Discord Bot";
+  description = "Develop Hikari Discord Bots with Hikari Crescent, edit shell.nix for more.";
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs?ref=nixos-unstable";

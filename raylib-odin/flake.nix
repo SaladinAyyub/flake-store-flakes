@@ -1,5 +1,5 @@
 {
-  description = "Raylib Odin Project";
+  description = "Develop Raylib Games with Odin Programming Language";
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";

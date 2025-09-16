@@ -1,5 +1,5 @@
 {
-  description = "Unreal Engine + VSCode IntelliSense environment on NixOS";
+  description = "Unreal Engine + VSCode IntelliSense environment for seemless integration";
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";

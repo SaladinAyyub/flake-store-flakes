@@ -1,5 +1,5 @@
 {
-  description = "Python Project";
+  description = "A bare(empty) template flake for Python Projects, edit shell.nix to add packages";
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs?ref=nixos-unstable";
