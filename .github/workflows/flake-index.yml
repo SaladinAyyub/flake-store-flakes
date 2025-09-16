@@ -1,47 +1,40 @@
-name: Generate Flake Index
+name: Update Flakes Index
 
 on:
   push:
-    branches: [ main ]
+    branches:
+      - main
     paths-ignore:
       - flakes.json
   workflow_dispatch:
 
 permissions:
-  contents: write
-
+  contents: write   # allow pushing changes back to the repo
 
 jobs:
-  build:
+  update-flakes:
     runs-on: ubuntu-latest
-
     steps:
-      - name: Checkout repo
+      - name: Checkout repository
         uses: actions/checkout@v4
+
+      - name: Install Nix
+        uses: cachix/install-nix-action@v27
 
       - name: Generate flakes.json
         run: |
-          echo "[" > flakes.json
-          first=true
+          flakes=()
           for dir in */; do
-            if [ -f "$dir/flake.nix" ]; then
-              desc=$(nix eval --impure --expr "((builtins.getFlake \"path:$dir\").description or \"\")" --raw || echo "")
-              if [ -z "$desc" ]; then
-                desc="No description provided"
-              fi
-
-              if [ "$first" = true ]; then
-                first=false
-              else
-                echo "," >> flakes.json
-              fi
-
-              echo "  {\"name\": \"${dir%/}\", \"description\": \"$desc\"}" >> flakes.json
+            if [[ -f "$dir/flake.nix" ]]; then
+              name=$(basename "$dir")
+              desc=$(nix flake metadata "./$dir" --json | jq -r .description)
+              flakes+=("{\"name\": \"$name\", \"description\": \"$desc\"}")
             fi
           done
-          echo "]" >> flakes.json
+          jq -s '.' <<< "${flakes[*]}" > flakes.json
+          cat flakes.json
 
-      - name: Commit flakes.json
+      - name: Commit and push if changed
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
