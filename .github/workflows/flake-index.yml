@@ -24,11 +24,13 @@ jobs:
       - name: Generate flakes.json
         run: |
           flakes=()
+          repo="https://github.com/SaladinAyyub/flake-store-flakes/tree/main"
           for dir in */; do
             if [[ -f "$dir/flake.nix" ]]; then
               name=$(basename "$dir")
               desc=$(nix flake metadata "./$dir" --json | jq -r .description)
-              flakes+=("{\"name\": \"$name\", \"description\": \"$desc\"}")
+              url="$repo/$name"
+              flakes+=("{\"name\": \"$name\", \"description\": \"$desc\", \"repo_url\": \"$url\"}")
             fi
           done
           jq -s '.' <<< "${flakes[*]}" > flakes.json
