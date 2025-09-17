@@ -1,18 +1,22 @@
 [
   {
     "name": "hikari-crescent-python",
-    "description": "Develop Hikari Discord Bots with Hikari Crescent, edit shell.nix for more."
+    "description": "Develop Hikari Discord Bots with Hikari Crescent, edit shell.nix for more.",
+    "repo_url": "https://github.com/SaladinAyyub/flake-store-flakes/tree/main/hikari-crescent-python"
   },
   {
     "name": "python-bare",
-    "description": "A bare(empty) template flake for Python Projects, edit shell.nix to add packages"
+    "description": "A bare(empty) template flake for Python Projects, edit shell.nix to add packages",
+    "repo_url": "https://github.com/SaladinAyyub/flake-store-flakes/tree/main/python-bare"
   },
   {
     "name": "raylib-odin",
-    "description": "Develop Raylib Games with Odin Programming Language"
+    "description": "Develop Raylib Games with Odin Programming Language",
+    "repo_url": "https://github.com/SaladinAyyub/flake-store-flakes/tree/main/raylib-odin"
   },
   {
     "name": "unreal-vscode-intellisense",
-    "description": "Unreal Engine + VSCode IntelliSense environment for seemless integration"
+    "description": "Unreal Engine + VSCode IntelliSense environment for seemless integration",
+    "repo_url": "https://github.com/SaladinAyyub/flake-store-flakes/tree/main/unreal-vscode-intellisense"
   }
 ]
