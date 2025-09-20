@@ -1,5 +1,10 @@
 [
   {
+    "name": "fvm-flutter-emulator",
+    "description": "Android Emulator evironment works with fvm + flutter, included options for better compatibility, make sure to edit build.gradle.kts for cmake and other version conflicts !",
+    "repo_url": "https://github.com/SaladinAyyub/flake-store-flakes/tree/main/fvm-flutter-emulator"
+  },
+  {
     "name": "hikari-crescent-python",
     "description": "Develop Hikari Discord Bots with Hikari Crescent, edit shell.nix for more.",
     "repo_url": "https://github.com/SaladinAyyub/flake-store-flakes/tree/main/hikari-crescent-python"
